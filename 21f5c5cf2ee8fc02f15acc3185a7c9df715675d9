@@ -16,6 +16,24 @@
       "revId": "21f5c5cf2ee8fc02f15acc3185a7c9df715675d9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAU3////M\u003d",
+        "filename": "libril/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2012-07-16T08:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAAU3////k\u003d",
+      "revId": "21f5c5cf2ee8fc02f15acc3185a7c9df715675d9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
