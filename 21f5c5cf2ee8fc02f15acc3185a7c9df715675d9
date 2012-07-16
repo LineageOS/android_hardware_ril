@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAU3////k\u003d",
+        "filename": "libril/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 383
+      },
+      "writtenOn": "2012-07-16T08:18:20Z",
+      "side": 1,
+      "message": "couldn\u0027t this be combined with the above into an ifeq/else statement instead of a distinct ifeq and ifneq? it seems that above we\u0027re testing the exact opposite of what\u0027s being tested here.",
+      "revId": "21f5c5cf2ee8fc02f15acc3185a7c9df715675d9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
