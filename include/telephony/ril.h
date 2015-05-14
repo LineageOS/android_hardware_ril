@@ -72,7 +72,10 @@ extern "C" {
  *                    RIL_REQUEST_SET_CARRIER_RESTRICTIONS and
  *                    RIL_UNSOL_PCO_DATA
  */
-#ifdef USE_RIL_VERSION_11
+#if defined(USE_RIL_VERSION_10)
+#define RIL_VERSION 10
+#define LAST_IMPRECISE_RIL_VERSION 10
+#elif defined(USE_RIL_VERSION_11)
 #define RIL_VERSION 11
 #define LAST_IMPRECISE_RIL_VERSION 11
 #else
