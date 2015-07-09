@@ -16,6 +16,24 @@
       "revId": "b3f9b4066929ec98041b759956c80126a41c1227",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ff73747_4caac785",
+        "filename": "rild/rild.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2015-07-09T15:47:56Z",
+      "side": 1,
+      "message": "Yes, I agree that would be much better and we should do that before this gets merged.",
+      "parentUuid": "5ff73747_116cdc34",
+      "revId": "b3f9b4066929ec98041b759956c80126a41c1227",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
