@@ -1,5 +1,7 @@
 # Copyright 2006 The Android Open Source Project
 
+ifneq ($(BOARD_PROVIDES_RILD),true)
+
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
@@ -30,3 +32,4 @@ LOCAL_INIT_RC := rild.rc
 
 include $(BUILD_EXECUTABLE)
 
+endif
