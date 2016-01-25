@@ -50,6 +50,8 @@ LOCAL_VENDOR_MODULE:= true
 
 LOCAL_PROTOC_OUTPUT := hardware/ril/librilutils
 
+LOCAL_PROTOC_OUTPUT := hardware/ril/librilutils
+
 include $(BUILD_STATIC_LIBRARY)
 
 # Create java protobuf code
