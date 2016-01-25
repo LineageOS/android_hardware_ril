@@ -19,6 +19,8 @@ LOCAL_PROTOC_OPTIMIZE_TYPE := nanopb-c-enable_malloc
 LOCAL_MODULE:= librilutils
 LOCAL_VENDOR_MODULE:= true
 
+LOCAL_PROTOC_OUTPUT := hardware/ril/librilutils
+
 include $(BUILD_SHARED_LIBRARY)
 
 
@@ -41,6 +43,8 @@ LOCAL_PROTOC_OPTIMIZE_TYPE := nanopb-c-enable_malloc
 
 LOCAL_MODULE:= librilutils_static
 iLOCAL_VENDOR_MODULE:= true
+
+LOCAL_PROTOC_OUTPUT := hardware/ril/librilutils
 
 include $(BUILD_STATIC_LIBRARY)
 
