@@ -102,6 +102,29 @@
       "revId": "d91a28ffb6fc953534be51e213599480fc255d27",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_623bf4ea",
+        "filename": "libril/ril_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-05-09T22:00:43Z",
+      "side": 1,
+      "message": "Why can\u0027t we just make this command #138? We control both halves of the system here.",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 20
+      },
+      "revId": "d91a28ffb6fc953534be51e213599480fc255d27",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
