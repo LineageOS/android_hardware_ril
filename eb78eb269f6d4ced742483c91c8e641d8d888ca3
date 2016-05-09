@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_e277e439",
+        "filename": "libril/ril.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 14222
+      },
+      "writtenOn": "2016-05-09T20:23:26Z",
+      "side": 1,
+      "message": "dispatchSetMaxTransmitPower",
+      "revId": "eb78eb269f6d4ced742483c91c8e641d8d888ca3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_82ae3096",
+        "filename": "libril/ril.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2107,
+      "author": {
+        "id": 14222
+      },
+      "writtenOn": "2016-05-09T20:23:26Z",
+      "side": 1,
+      "message": "dispatchSetMaxTransmitPower",
+      "range": {
+        "startLine": 2107,
+        "startChar": 12,
+        "endLine": 2107,
+        "endChar": 39
+      },
+      "revId": "eb78eb269f6d4ced742483c91c8e641d8d888ca3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_4290384f",
+        "filename": "libril/ril.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2115,
+      "author": {
+        "id": 14222
+      },
+      "writtenOn": "2016-05-09T20:23:26Z",
+      "side": 1,
+      "message": "dispatchSetMaxTransmitPower",
+      "range": {
+        "startLine": 2115,
+        "startChar": 15,
+        "endLine": 2115,
+        "endChar": 42
+      },
+      "revId": "eb78eb269f6d4ced742483c91c8e641d8d888ca3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_e29e0462",
+        "filename": "libril/ril.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2119,
+      "author": {
+        "id": 14222
+      },
+      "writtenOn": "2016-05-09T20:23:26Z",
+      "side": 1,
+      "message": "dispatchSetMaxTransmitPower",
+      "revId": "eb78eb269f6d4ced742483c91c8e641d8d888ca3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_0273204f",
+        "filename": "libril/ril.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2133,
+      "author": {
+        "id": 14222
+      },
+      "writtenOn": "2016-05-09T20:23:26Z",
+      "side": 1,
+      "message": "remove leading spaces on label to be consistent with line 2101",
+      "revId": "eb78eb269f6d4ced742483c91c8e641d8d888ca3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
