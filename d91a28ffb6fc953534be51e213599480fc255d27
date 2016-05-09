@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "5faad753_0255601d",
+        "filename": "libril/ril.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 13513
+      },
+      "writtenOn": "2016-05-09T22:05:25Z",
+      "side": 1,
+      "message": "I can remove it, its a good to have, but probably good to have least amount of changes.",
+      "parentUuid": "5faad753_c2c188e6",
+      "range": {
+        "startLine": 520,
+        "startChar": 8,
+        "endLine": 521,
+        "endChar": 44
+      },
+      "revId": "d91a28ffb6fc953534be51e213599480fc255d27",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5faad753_62b8d475",
         "filename": "libril/ril.cpp",
         "patchSetId": 1
