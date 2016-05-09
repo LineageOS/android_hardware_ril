@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_4284b8b1",
+        "filename": "include/telephony/ril.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-05-09T21:55:32Z",
+      "side": 1,
+      "message": "indentation",
+      "revId": "d91a28ffb6fc953534be51e213599480fc255d27",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_e29284f6",
+        "filename": "include/telephony/ril.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1513,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-05-09T21:55:32Z",
+      "side": 1,
+      "message": "struct name should be camel case to match other structs.",
+      "revId": "d91a28ffb6fc953534be51e213599480fc255d27",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_c2c188e6",
+        "filename": "libril/ril.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-05-09T21:55:32Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to go with this change does it?",
+      "range": {
+        "startLine": 520,
+        "startChar": 8,
+        "endLine": 521,
+        "endChar": 44
+      },
+      "revId": "d91a28ffb6fc953534be51e213599480fc255d27",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_62b8d475",
+        "filename": "libril/ril.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2116,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-05-09T21:55:32Z",
+      "side": 1,
+      "message": "Can use __func__ instead of spelling out the name of the function every time.",
+      "range": {
+        "startLine": 2116,
+        "startChar": 15,
+        "endLine": 2116,
+        "endChar": 42
+      },
+      "revId": "d91a28ffb6fc953534be51e213599480fc255d27",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_626d3403",
+        "filename": "libril/ril.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2127,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-05-09T21:55:32Z",
+      "side": 1,
+      "message": "CALL_ONREQUEST ?",
+      "range": {
+        "startLine": 2127,
+        "startChar": 4,
+        "endLine": 2127,
+        "endChar": 79
+      },
+      "revId": "d91a28ffb6fc953534be51e213599480fc255d27",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
