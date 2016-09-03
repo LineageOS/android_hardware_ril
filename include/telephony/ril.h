@@ -72,8 +72,13 @@ extern "C" {
  *                    RIL_REQUEST_SET_CARRIER_RESTRICTIONS and
  *                    RIL_UNSOL_PCO_DATA
  */
+#ifdef USE_RIL_VERSION_11
+#define RIL_VERSION 11
+#define LAST_IMPRECISE_RIL_VERSION 11
+#else
 #define RIL_VERSION 12
 #define LAST_IMPRECISE_RIL_VERSION 12 // Better self-documented name
+#endif
 #define RIL_VERSION_MIN 6 /* Minimum RIL_VERSION supported */
 
 #define CDMA_ALPHA_INFO_BUFFER_LENGTH 64
