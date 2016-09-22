@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa4df85_56552c1c",
+        "filename": "rild/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 6998
+      },
+      "writtenOn": "2016-09-22T18:26:17Z",
+      "side": 1,
+      "message": "Other devices can provide libril for different use cases where this flag shouldn\u0027t necessarily not be defined.",
+      "revId": "176ae837ca1c90feb79f04448f11a1a397cac1cc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
