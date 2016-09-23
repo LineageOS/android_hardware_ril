@@ -16,6 +16,24 @@
       "revId": "176ae837ca1c90feb79f04448f11a1a397cac1cc",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa4df85_6dd09620",
+        "filename": "rild/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 11279
+      },
+      "writtenOn": "2016-09-23T18:45:28Z",
+      "side": 1,
+      "message": "Yeah, the variable name is a little misleading. I will rename it. However this doesn\u0027t affect functionality.",
+      "parentUuid": "1fa4df85_56552c1c",
+      "revId": "176ae837ca1c90feb79f04448f11a1a397cac1cc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
