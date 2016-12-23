@@ -282,7 +282,8 @@ static void dispatchUiccSubscripton(Parcel &p, RequestInfo *pRI);
 static void dispatchSimAuthentication(Parcel &p, RequestInfo *pRI);
 static void dispatchDataProfile(Parcel &p, RequestInfo *pRI);
 static void dispatchRadioCapability(Parcel &p, RequestInfo *pRI);
-static void dispatchCarrierRestrictions(Parcel &p, RequestInfo *pRI);
+static void dispatchSetCarrierRestrictions(Parcel &p, RequestInfo *pRI);
+static void dispatchGetCarrierRestrictions(Parcel &p, RequestInfo *pRI);
 static void dispatchOpenChannelWithP2(Parcel &p, RequestInfo *pRI);
 static void dispatchAdnRecord(Parcel &p, RequestInfo *pRI);
 static int responseInts(Parcel &p, void *response, size_t responselen);
@@ -2144,7 +2145,7 @@ invalid:
 /**
  * Callee expects const RIL_CarrierRestrictions *
  */
-static void dispatchCarrierRestrictions(Parcel &p, RequestInfo *pRI) {
+static void dispatchSetCarrierRestrictions(Parcel &p, RequestInfo *pRI) {
     RIL_CarrierRestrictions cr;
     RIL_Carrier * allowed_carriers = NULL;
     RIL_Carrier * excluded_carriers = NULL;
@@ -2238,6 +2239,16 @@ exit:
         free(excluded_carriers);
     }
     return;
+}
+
+static void dispatchGetCarrierRestrictions(Parcel &p, RequestInfo *pRI) {
+    if (s_callbacks.version < 14) {
+        RLOGE("Unsupported RIL version %d, min version expected %d",
+              s_callbacks.version, 14);
+        RIL_onRequestComplete(pRI, RIL_E_REQUEST_NOT_SUPPORTED, NULL, 0);
+        return;
+    }
+    dispatchVoid(p, pRI);
 }
 
 /**
