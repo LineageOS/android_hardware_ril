@@ -21,6 +21,7 @@
 #include <ril_service.h>
 #include <hidl/HidlTransportSupport.h>
 #include <utils/SystemClock.h>
+#include <inttypes.h>
 
 #define INVALID_HEX_CHAR 16
 
@@ -135,13 +136,10 @@ struct RadioImpl : public IRadio {
     Return<void> sendSMSExpectMore(int32_t serial, const GsmSmsMessage& message);
 
     Return<void> setupDataCall(int32_t serial,
-            int32_t radioTechnology,
-            int32_t profile,
-            const ::android::hardware::hidl_string& apn,
-            const ::android::hardware::hidl_string& user,
-            const ::android::hardware::hidl_string& password,
-            ApnAuthType authType,
-            const ::android::hardware::hidl_string& protocol);
+            RadioTechnology radioTechnology,
+            const DataProfileInfo& profileInfo,
+            bool modemCognitive,
+            bool roamingAllowed);
 
     Return<void> iccIOForApp(int32_t serial,
             const IccIo& iccIo);
@@ -333,12 +331,8 @@ struct RadioImpl : public IRadio {
 
     Return<void> setCellInfoListRate(int32_t serial, int32_t rate);
 
-    Return<void> setInitialAttachApn(int32_t serial,
-            const ::android::hardware::hidl_string& apn,
-            const ::android::hardware::hidl_string& protocol,
-            ApnAuthType authType,
-            const ::android::hardware::hidl_string& username,
-            const ::android::hardware::hidl_string& password);
+    Return<void> setInitialAttachApn(int32_t serial, const DataProfileInfo& dataProfileInfo,
+            bool modemCognitive);
 
     Return<void> getImsRegistrationState(int32_t serial);
 
@@ -395,6 +389,10 @@ struct RadioImpl : public IRadio {
             const CarrierRestrictions& carriers);
 
     Return<void> getAllowedCarriers(int32_t serial);
+
+    Return<void> sendDeviceState(int32_t serial, DeviceStateType deviceStateType, bool state);
+
+    Return<void> setIndicationFilter(int32_t serial, int32_t indicationFilter);
 
     Return<void> responseAcknowledgement();
 
@@ -725,14 +723,9 @@ Return<void> RadioImpl::sendSms(int32_t serial, const GsmSmsMessage& message) {r
 
 Return<void> RadioImpl::sendSMSExpectMore(int32_t serial, const GsmSmsMessage& message) {return Status::ok();}
 
-Return<void> RadioImpl::setupDataCall(int32_t serial,
-        int32_t radioTechnology,
-        int32_t profile,
-        const ::android::hardware::hidl_string& apn,
-        const ::android::hardware::hidl_string& user,
-        const ::android::hardware::hidl_string& password,
-        ApnAuthType authType,
-        const ::android::hardware::hidl_string& protocol) {return Status::ok();}
+Return<void> RadioImpl::setupDataCall(int32_t serial, RadioTechnology radioTechnology,
+        const DataProfileInfo& dataProfileInfo, bool modemCognitive, bool roamingAllowed) {
+        return Status::ok();}
 
 Return<void> RadioImpl::iccIOForApp(int32_t serial,
         const IccIo& iccIo) {return Status::ok();}
@@ -922,12 +915,7 @@ Return<void> RadioImpl::getCellInfoList(int32_t serial) {return Status::ok();}
 
 Return<void> RadioImpl::setCellInfoListRate(int32_t serial, int32_t rate) {return Status::ok();}
 
-Return<void> RadioImpl::setInitialAttachApn(int32_t serial,
-        const ::android::hardware::hidl_string& apn,
-        const ::android::hardware::hidl_string& protocol,
-        ApnAuthType authType,
-        const ::android::hardware::hidl_string& username,
-        const ::android::hardware::hidl_string& password) {return Status::ok();}
+Return<void> RadioImpl::setInitialAttachApn(int32_t serial, const DataProfileInfo& dataProfileInfo, bool modemCognitive) {return Status::ok();}
 
 Return<void> RadioImpl::getImsRegistrationState(int32_t serial) {return Status::ok();}
 
@@ -984,6 +972,10 @@ Return<void> RadioImpl::setAllowedCarriers(int32_t serial,
         const CarrierRestrictions& carriers) {return Status::ok();}
 
 Return<void> RadioImpl::getAllowedCarriers(int32_t serial) {return Status::ok();}
+
+Return<void> RadioImpl::sendDeviceState(int32_t serial, DeviceStateType deviceStateType, bool state) {return Status::ok();}
+
+Return<void> RadioImpl::setIndicationFilter(int32_t serial, int32_t indicationFilter) {return Status::ok();}
 
 Return<void> RadioImpl::responseAcknowledgement() {
     android::releaseWakeLock();
@@ -1313,16 +1305,16 @@ int radio::callStateChangedInd(android::Parcel &p, int slotId, int requestNumber
     return 0;
 }
 
-int radio::voiceNetworkStateChangedInd(android::Parcel &p, int slotId, int requestNumber,
+int radio::networkStateChangedInd(android::Parcel &p, int slotId, int requestNumber,
                                        int indicationType, int token, RIL_Errno e, void *response,
                                        size_t responseLen) {
     if (radioService[slotId] != NULL && radioService[slotId]->mRadioIndication != NULL) {
-        RLOGD("radio::voiceNetworkStateChangedInd");
-        Return<void> retStatus = radioService[slotId]->mRadioIndication->voiceNetworkStateChanged(
+        RLOGD("radio::networkStateChangedInd");
+        Return<void> retStatus = radioService[slotId]->mRadioIndication->networkStateChanged(
                 convertIntToRadioIndicationType(indicationType));
         radioService[slotId]->checkReturnStatus(retStatus);
     } else {
-        RLOGE("radio::voiceNetworkStateChangedInd: radioService[%d]->mRadioIndication == NULL",
+        RLOGE("radio::networkStateChangedInd: radioService[%d]->mRadioIndication == NULL",
                 slotId);
     }
 
@@ -1349,7 +1341,7 @@ uint8_t * convertHexStringToBytes(void *response, size_t responseLen) {
     }
     uint8_t *hexString = (uint8_t *)response;
 
-    for (int i = 0; i < responseLen; i += 2) {
+    for (size_t i = 0; i < responseLen; i += 2) {
         uint8_t hexChar1 = hexCharToInt(hexString[i]);
         uint8_t hexChar2 = hexCharToInt(hexString[i + 1]);
 
@@ -1473,7 +1465,7 @@ int radio::nitzTimeReceivedInd(android::Parcel &p, int slotId, int requestNumber
         }
         hidl_string nitzTime = convertCharPtrToHidlString((char *) response);
         int64_t timeReceived = android::elapsedRealtime();
-        RLOGD("radio::nitzTimeReceivedInd: nitzTime %s receivedTime %ld", nitzTime.c_str(),
+        RLOGD("radio::nitzTimeReceivedInd: nitzTime %s receivedTime %" PRId64, nitzTime.c_str(),
                 timeReceived);
         Return<void> retStatus = radioService[slotId]->mRadioIndication->nitzTimeReceived(
                 convertIntToRadioIndicationType(indicationType), nitzTime, timeReceived);
