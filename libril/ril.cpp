@@ -3667,7 +3667,7 @@ static int responseRadioCapability(Parcel &p, void *response, size_t responselen
 
     startResponse;
     appendPrintBuf("%s[version=%d,session=%d,phase=%d,\
-            rat=%s,logicalModemUuid=%s,status=%d]",
+            rat=%d,logicalModemUuid=%s,status=%d]",
             printBuf,
             p_cur->version,
             p_cur->session,
