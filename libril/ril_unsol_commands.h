@@ -14,8 +14,7 @@
 ** See the License for the specific language governing permissions and
 ** limitations under the License.
 */
-    {RIL_UNSOL_RESPONSE_RADIO_STATE_CHANGED, responseVoid, WAKE_PARTIAL},
-
+    {RIL_UNSOL_RESPONSE_RADIO_STATE_CHANGED, radio::radioStateChangedInd, WAKE_PARTIAL},
     {RIL_UNSOL_RESPONSE_CALL_STATE_CHANGED, radio::callStateChangedInd, WAKE_PARTIAL},
     {RIL_UNSOL_RESPONSE_VOICE_NETWORK_STATE_CHANGED, radio::networkStateChangedInd, WAKE_PARTIAL},
     {RIL_UNSOL_RESPONSE_NEW_SMS, radio::newSmsInd, WAKE_PARTIAL},
@@ -56,7 +55,7 @@
     {RIL_UNSOL_UICC_SUBSCRIPTION_STATUS_CHANGED, radio::subscriptionStatusChangedInd, WAKE_PARTIAL},
     {RIL_UNSOL_SRVCC_STATE_NOTIFY, radio::srvccStateNotifyInd, WAKE_PARTIAL},
     {RIL_UNSOL_HARDWARE_CONFIG_CHANGED, radio::hardwareConfigChangedInd, WAKE_PARTIAL},
-    {RIL_UNSOL_DC_RT_INFO_CHANGED, responseDcRtInfo, WAKE_PARTIAL},
+    {RIL_UNSOL_DC_RT_INFO_CHANGED, NULL, WAKE_PARTIAL},
     {RIL_UNSOL_RADIO_CAPABILITY, radio::radioCapabilityIndicationInd, WAKE_PARTIAL},
     {RIL_UNSOL_ON_SS, radio::onSupplementaryServiceIndicationInd, WAKE_PARTIAL},
     {RIL_UNSOL_STK_CC_ALPHA_NOTIFY, radio::stkCallControlAlphaNotifyInd, WAKE_PARTIAL},
