@@ -83,6 +83,7 @@ extern "C" {
  *                    RIL_VoiceRegistrationStateResponse same is
  *                    used in RIL_REQUEST_DATA_REGISTRATION_STATE and
  *                    RIL_REQUEST_VOICE_REGISTRATION_STATE respectively.
+ *                    New data structure RIL_OpenChannelParams.
  */
 #define RIL_VERSION 12
 #define LAST_IMPRECISE_RIL_VERSION 12 // Better self-documented name
@@ -2019,6 +2020,12 @@ typedef enum {
                                               // bit is set or not.
 } RIL_UnsolicitedResponseFilter;
 
+typedef struct {
+    char * aidPtr; /* AID value, See ETSI 102.221 and 101.220*/
+    int p2;        /* P2 parameter (described in ISO 7816-4)
+                      P2Constants:NO_P2 if to be ignored */
+} RIL_OpenChannelParams;
+
 /**
  * RIL_REQUEST_GET_SIM_STATUS
  *
@@ -2049,7 +2056,6 @@ typedef enum {
  *
  * SUCCESS
  * RADIO_NOT_AVAILABLE (radio resetting)
- * GENERIC_FAILURE
  * PASSWORD_INCORRECT
  */
 
@@ -2489,6 +2495,12 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  MODEM_ERR
+ *  NOT_PROVISIONED
+ *  REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_SIGNAL_STRENGTH 19
 
@@ -2517,6 +2529,12 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  MODEM_ERR
+ *  NOT_PROVISIONED
+ *  REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_DATA_REGISTRATION_STATE 21
 
@@ -2538,6 +2556,10 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_OPERATOR 22
 
@@ -2563,6 +2585,16 @@ typedef enum {
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
  *  OPERATION_NOT_ALLOWED
+ *  INVALID_STATE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  DEVICE_IN_USE
+ *  OPERATION_NOT_ALLOWED
+ *  INVALID_MODEM_STATE
+ *  REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_RADIO_POWER 23
 
@@ -2612,7 +2644,6 @@ typedef enum {
  *
  * Based on the return error, caller decides to resend if sending sms
  * fails. SMS_SEND_FAIL_RETRY means retry (i.e. error cause is 332)
- * and GENERIC_FAILURE means no retry (i.e. error cause is 500)
  *
  * Valid errors:
  *  SUCCESS
@@ -2655,7 +2686,6 @@ typedef enum {
  *
  * Based on the return error, caller decides to resend if sending sms
  * fails. SMS_SEND_FAIL_RETRY means retry (i.e. error cause is 332)
- * and GENERIC_FAILURE means no retry (i.e. error cause is 500)
  *
  * Valid errors:
  *  SUCCESS
@@ -2748,8 +2778,9 @@ typedef enum {
  *  For all other errors the RIL_Data_Call_Resonse_v6 is ignored.
  *
  *  Other errors could include:
- *    RADIO_NOT_AVAILABLE, GENERIC_FAILURE, OP_NOT_ALLOWED_BEFORE_REG_TO_NW,
- *    OP_NOT_ALLOWED_DURING_VOICE_CALL and REQUEST_NOT_SUPPORTED.
+ *    RADIO_NOT_AVAILABLE, OP_NOT_ALLOWED_BEFORE_REG_TO_NW,
+ *    OP_NOT_ALLOWED_DURING_VOICE_CALL and REQUEST_NOT_SUPPORTED,
+ *    INVALID_ARGUMENTS
  *
  * See also: RIL_REQUEST_DEACTIVATE_DATA_CALL
  */
@@ -3044,6 +3075,12 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE (radio resetting)
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  MODEM_ERR
+ *  NOT_PROVISIONED
+ *  REQUEST_NOT_SUPPORTED
  */
 
 #define RIL_REQUEST_GET_IMEI 38
@@ -3062,6 +3099,12 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE (radio resetting)
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  MODEM_ERR
+ *  NOT_PROVISIONED
+ *  REQUEST_NOT_SUPPORTED
  */
 
 #define RIL_REQUEST_GET_IMEISV 39
@@ -3114,6 +3157,10 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
+ *  INVALID_CALL_ID
+ *  INVALID_STATE
+ *  INVALID_ARGUMENTS
+ *  REQUEST_NOT_SUPPORTED
  *
  * See also: RIL_REQUEST_SETUP_DATA_CALL
  */
@@ -3238,6 +3285,12 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  REQUEST_NOT_SUPPORTED
  *
  */
 #define RIL_REQUEST_QUERY_NETWORK_SELECTION_MODE 45
@@ -3258,11 +3311,15 @@ typedef enum {
  *  RADIO_NOT_AVAILABLE
  *  ILLEGAL_SIM_OR_ME
  *  OPERATION_NOT_ALLOWED
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  REQUEST_NOT_SUPPORTED
  *
  * Note: Returns ILLEGAL_SIM_OR_ME when the failure is permanent and
  *       no retries needed, such as illegal SIM or ME.
- *       Returns GENERIC_FAILURE for all other causes that might be
- *       fixed by retries.
  *
  */
 #define RIL_REQUEST_SET_NETWORK_SELECTION_AUTOMATIC 46
@@ -3283,11 +3340,16 @@ typedef enum {
  *  RADIO_NOT_AVAILABLE
  *  ILLEGAL_SIM_OR_ME
  *  OPERATION_NOT_ALLOWED
+ *  INVALID_STATE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  REQUEST_NOT_SUPPORTED
  *
  * Note: Returns ILLEGAL_SIM_OR_ME when the failure is permanent and
  *       no retries needed, such as illegal SIM or ME.
- *       Returns GENERIC_FAILURE for all other causes that might be
- *       fixed by retries.
  *
  */
 #define RIL_REQUEST_SET_NETWORK_SELECTION_MANUAL 47
@@ -3320,6 +3382,9 @@ typedef enum {
  *  INTERNAL_ERR
  *  NO_MEMORY
  *  MODEM_ERR
+ *  REQUEST_NOT_SUPPORTED
+ *  CANCELLED
+ *  OPERATION_NOT_ALLOWED
  *
  */
 #define RIL_REQUEST_QUERY_AVAILABLE_NETWORKS 48
@@ -3389,6 +3454,12 @@ typedef enum {
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
  *  EMPTY_RECORD
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  MODEM_ERR
+ *  NOT_PROVISIONED
+ *  REQUEST_NOT_SUPPORTED
  *
  */
 #define RIL_REQUEST_BASEBAND_VERSION 51
@@ -3643,6 +3714,11 @@ typedef enum {
  *
  * Valid errors:
  *  SUCCESS
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_SCREEN_STATE 61
 
@@ -3739,6 +3815,12 @@ typedef enum {
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
  *  OPERATION_NOT_ALLOWED
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  REQUEST_NOT_SUPPORTED
  *
  * See also: RIL_REQUEST_QUERY_AVAILABLE_BAND_MODE
  */
@@ -3758,6 +3840,11 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  MODEM_ERR
+ *  REQUEST_NOT_SUPPORTED
  *
  * See also: RIL_REQUEST_SET_BAND_MODE
  */
@@ -3778,7 +3865,6 @@ typedef enum {
  * Valid errors:
  *  RIL_E_SUCCESS
  *  RIL_E_RADIO_NOT_AVAILABLE (radio resetting)
- *  RIL_E_GENERIC_FAILURE
  */
 #define RIL_REQUEST_STK_GET_PROFILE 67
 
@@ -3796,7 +3882,6 @@ typedef enum {
  * Valid errors:
  *  RIL_E_SUCCESS
  *  RIL_E_RADIO_NOT_AVAILABLE (radio resetting)
- *  RIL_E_GENERIC_FAILURE
  */
 #define RIL_REQUEST_STK_SET_PROFILE 68
 
@@ -3818,7 +3903,6 @@ typedef enum {
  *  RIL_E_RADIO_NOT_AVAILABLE (radio resetting)
  *  SIM_BUSY
  *  OPERATION_NOT_ALLOWED
- *  RIL_E_GENERIC_FAILURE
  */
 #define RIL_REQUEST_STK_SEND_ENVELOPE_COMMAND 69
 
@@ -3837,7 +3921,6 @@ typedef enum {
  *  RIL_E_SUCCESS
  *  RIL_E_RADIO_NOT_AVAILABLE (radio resetting)
  *  RIL_E_OPERATION_NOT_ALLOWED
- *  RIL_E_GENERIC_FAILURE
  */
 #define RIL_REQUEST_STK_SEND_TERMINAL_RESPONSE 70
 
@@ -3859,7 +3942,6 @@ typedef enum {
  *  RIL_E_SUCCESS
  *  RIL_E_RADIO_NOT_AVAILABLE (radio resetting)
  *  RIL_E_OPERATION_NOT_ALLOWED
- *  RIL_E_GENERIC_FAILURE
  */
 #define RIL_REQUEST_STK_HANDLE_CALL_SETUP_REQUESTED_FROM_SIM 71
 
@@ -3902,6 +3984,12 @@ typedef enum {
  *  RADIO_NOT_AVAILABLE (radio resetting)
  *  OPERATION_NOT_ALLOWED
  *  MODE_NOT_SUPPORTED
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_SET_PREFERRED_NETWORK_TYPE 73
 
@@ -3919,6 +4007,12 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  REQUEST_NOT_SUPPORTED
  *
  * See also: RIL_REQUEST_SET_PREFERRED_NETWORK_TYPE
  */
@@ -3935,6 +4029,12 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  MODEM_ERR
+ *  NO_NETWORK_FOUND
+ *  REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_GET_NEIGHBORING_CELL_IDS 75
 
@@ -3957,6 +4057,12 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  REQUEST_NOT_SUPPORTED
  *
  * See also: RIL_REQUEST_SCREEN_STATE, RIL_UNSOL_RESPONSE_NETWORK_STATE_CHANGED
  */
@@ -3998,6 +4104,13 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  REQUEST_NOT_SUPPORTED
+ *  OPERATION_NOT_ALLOWED
  */
 #define RIL_REQUEST_CDMA_SET_ROAMING_PREFERENCE 78
 
@@ -4018,6 +4131,12 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_CDMA_QUERY_ROAMING_PREFERENCE 79
 
@@ -4190,6 +4309,12 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  REQUEST_NOT_SUPPORTED
  *
  */
 #define RIL_REQUEST_CDMA_VALIDATE_AND_WRITE_AKEY 86
@@ -4207,7 +4332,6 @@ typedef enum {
  * fails. The CDMA error class is derived as follows,
  * SUCCESS is error class 0 (no error)
  * SMS_SEND_FAIL_RETRY is error class 2 (temporary failure)
- * and GENERIC_FAILURE is error class 3 (permanent and no retry)
  *
  * Valid errors:
  *  SUCCESS
@@ -4428,6 +4552,14 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RIL_E_SUBSCRIPTION_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  NOT_PROVISIONED
+ *  REQUEST_NOT_SUPPORTED
+ *
  */
 
 #define RIL_REQUEST_CDMA_SUBSCRIPTION 95
@@ -4507,6 +4639,14 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  NOT_PROVISIONED
+ *  REQUEST_NOT_SUPPORTED
+ *
  */
 #define RIL_REQUEST_DEVICE_IDENTITY 98
 
@@ -4525,6 +4665,12 @@ typedef enum {
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
  *  OPERATION_NOT_ALLOWED
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  REQUEST_NOT_SUPPORTED
  *
  */
 #define RIL_REQUEST_EXIT_EMERGENCY_CALLBACK_MODE 99
@@ -4695,7 +4841,6 @@ typedef enum {
  *  RIL_E_RADIO_NOT_AVAILABLE (radio resetting)
  *  SIM_BUSY
  *  OPERATION_NOT_ALLOWED
- *  RIL_E_GENERIC_FAILURE
  */
 #define RIL_REQUEST_STK_SEND_ENVELOPE_WITH_STATUS 107
 
@@ -4726,6 +4871,17 @@ typedef enum {
  * "data" is NULL
  *
  * "response" is an array of  RIL_CellInfo_v12.
+ *
+ * Valid errors:
+ *  SUCCESS
+ *  RADIO_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  MODEM_ERR
+ *  NO_NETWORK_FOUND
+ *  REQUEST_NOT_SUPPORTED
+ *
  */
 #define RIL_REQUEST_GET_CELL_INFO_LIST 109
 
@@ -4745,6 +4901,11 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_SET_UNSOL_CELL_INFO_LIST_RATE 110
 
@@ -4772,6 +4933,14 @@ typedef enum {
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE (radio resetting)
  *  SUBSCRIPTION_NOT_AVAILABLE
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  NOT_PROVISIONED
+ *  REQUEST_NOT_SUPPORTED
+ *
  */
 #define RIL_REQUEST_SET_INITIAL_ATTACH_APN 111
 
@@ -4858,9 +5027,10 @@ typedef enum {
  * RIL_REQUEST_SIM_OPEN_CHANNEL
  *
  * Open a new logical channel and select the given application. This command
- * reflects TS 27.007 "open logical channel" operation (+CCHO).
+ * reflects TS 27.007 "open logical channel" operation (+CCHO). This request
+ * also specifies the P2 parameter (described in ISO 7816-4).
  *
- * "data" is const char * and set to AID value, See ETSI 102.221 and 101.220.
+ * "data" is a const RIL_OpenChannelParam *
  *
  * "response" is int *
  * ((int *)data)[0] contains the session id of the logical channel.
@@ -4990,6 +5160,12 @@ typedef enum {
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE (radio resetting)
  *  SUBSCRIPTION_NOT_SUPPORTED
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  REQUEST_NOT_SUPPORTED
  *
  */
 #define RIL_REQUEST_SET_UICC_SUBSCRIPTION  122
@@ -5010,6 +5186,14 @@ typedef enum {
  *
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE (radio resetting)
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  MODEM_ERR
+ *  INVALID_ARGUMENTS
+ *  DEVICE_IN_USE
+ *  INVALID_MODEM_STATE
+ *  REQUEST_NOT_SUPPORTED
  *
  */
 #define RIL_REQUEST_ALLOW_DATA  123
@@ -5060,6 +5244,7 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
+ *  REQUEST_NOT_SUPPORTED
  *
  * See also: RIL_UNSOL_DC_RT_INFO_CHANGED
  */
@@ -5112,6 +5297,10 @@ typedef enum {
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
  *  OPERATION_NOT_ALLOWED
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_SHUTDOWN 129
 
@@ -5126,6 +5315,8 @@ typedef enum {
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE
  *  OPERATION_NOT_ALLOWED
+ *  INVALID_STATE
+ *  REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_GET_RADIO_CAPABILITY 130
 
@@ -5145,6 +5336,13 @@ typedef enum {
  *  SUCCESS means a RIL_UNSOL_RADIO_CAPABILITY will be sent within 30 seconds.
  *  RADIO_NOT_AVAILABLE
  *  OPERATION_NOT_ALLOWED
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  MODEM_ERR
+ *  INVALID_STATE
+ *  REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_SET_RADIO_CAPABILITY 131
 
@@ -5163,6 +5361,8 @@ typedef enum {
  * SUCCESS
  * RADIO_NOT_AVAILABLE
  * LCE_NOT_SUPPORTED
+ * INTERNAL_ERR
+ * REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_START_LCE 132
 
@@ -5211,7 +5411,12 @@ typedef enum {
  *
  * SUCCESS
  * RADIO_NOT_AVAILABLE (radio resetting)
- * GENERIC_FAILURE
+ * NO_MEMORY
+ * INTERNAL_ERR
+ * SYSTEM_ERR
+ * MODEM_ERR
+ * NOT_PROVISIONED
+ * REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_GET_ACTIVITY_INFO 135
 
@@ -5282,6 +5487,11 @@ typedef enum {
  * Valid errors:
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE (radio resetting)
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
+ *  REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_SEND_DEVICE_STATE 138
 
@@ -5303,6 +5513,10 @@ typedef enum {
  *  SUCCESS
  *  INVALID_ARGUMENTS (e.g. the requested filter doesn't exist)
  *  RADIO_NOT_AVAILABLE (radio resetting)
+ *  NO_MEMORY
+ *  INTERNAL_ERR
+ *  SYSTEM_ERR
+ *  REQUEST_NOT_SUPPORTED
  */
 #define RIL_REQUEST_SET_UNSOLICITED_RESPONSE_FILTER 139
 
