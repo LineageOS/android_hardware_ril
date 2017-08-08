@@ -41,8 +41,12 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/../include
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/../include
 
 LOCAL_MODULE:= libril
-LOCAL_CLANG := true
-LOCAL_SANITIZE := integer
+ifeq ($(TARGET_NEEDS_GCC_LIBRIL),true)
+    LOCAL_CLANG := false
+else
+    LOCAL_CLANG := true
+    LOCAL_SANITIZE := integer
+endif
 
 include $(BUILD_SHARED_LIBRARY)
 
