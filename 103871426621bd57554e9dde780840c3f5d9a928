@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1352960f_635908a9",
+        "filename": "libril/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2017-08-09T13:24:47Z",
+      "side": 1,
+      "message": "Do you think it\u0027s better not to depend on the libc hack and instead use TARGET_NEEDS_GCC_LIBRIL?",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "103871426621bd57554e9dde780840c3f5d9a928",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
