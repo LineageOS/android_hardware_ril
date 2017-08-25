@@ -103,6 +103,9 @@ void convertRilSignalStrengthToHal(void *response, size_t responseLen,
 void convertRilDataCallToHal(RIL_Data_Call_Response_v11 *dcResponse,
         SetupDataCallResult& dcResult);
 
+void convertRilDataCallToHalv9(RIL_Data_Call_Response_v9 *dcResponse,
+        SetupDataCallResult& dcResult);
+
 void convertRilDataCallListToHal(void *response, size_t responseLen,
         hidl_vec<SetupDataCallResult>& dcResultList);
 
@@ -3834,7 +3837,7 @@ int radio::setupDataCallResponse(int slotId,
         populateResponseInfo(responseInfo, serial, responseType, e);
 
         SetupDataCallResult result = {};
-        if (response == NULL || (responseLen % sizeof(RIL_Data_Call_Response_v11)) != 0) {
+        if (response == NULL || ((responseLen % sizeof(RIL_Data_Call_Response_v11)) != 0 && (responseLen % sizeof(RIL_Data_Call_Response_v9) != 0))) {
             if (response != NULL) {
                 RLOGE("setupDataCallResponse: Invalid response");
                 if (e == RIL_E_SUCCESS) responseInfo.error = RadioError::INVALID_RESPONSE;
@@ -3846,9 +3849,11 @@ int radio::setupDataCallResponse(int slotId,
             result.dnses = hidl_string();
             result.gateways = hidl_string();
             result.pcscf = hidl_string();
-        } else {
+        } else if (responseLen % sizeof(RIL_Data_Call_Response_v11) == 0) {
             convertRilDataCallToHal((RIL_Data_Call_Response_v11 *) response, result);
-        }
+        } else {
+            convertRilDataCallToHalv9((RIL_Data_Call_Response_v9 *) response, result);
+		}
 
         Return<void> retStatus = radioService[slotId]->mRadioResponse->setupDataCallResponse(
                 responseInfo, result);
@@ -6757,6 +6762,21 @@ void convertRilDataCallToHal(RIL_Data_Call_Response_v11 *dcResponse,
     dcResult.gateways = convertCharPtrToHidlString(dcResponse->gateways);
     dcResult.pcscf = convertCharPtrToHidlString(dcResponse->pcscf);
     dcResult.mtu = dcResponse->mtu;
+}
+
+void convertRilDataCallToHalv9(RIL_Data_Call_Response_v9 *dcResponse,
+        SetupDataCallResult& dcResult) {
+    dcResult.status = (DataCallFailCause) dcResponse->status;
+    dcResult.suggestedRetryTime = dcResponse->suggestedRetryTime;
+    dcResult.cid = dcResponse->cid;
+    dcResult.active = dcResponse->active;
+    dcResult.type = convertCharPtrToHidlString(dcResponse->type);
+    dcResult.ifname = convertCharPtrToHidlString(dcResponse->ifname);
+    dcResult.addresses = convertCharPtrToHidlString(dcResponse->addresses);
+    dcResult.dnses = convertCharPtrToHidlString(dcResponse->dnses);
+    dcResult.gateways = convertCharPtrToHidlString(dcResponse->gateways);
+    dcResult.pcscf = convertCharPtrToHidlString(dcResponse->pcscf);
+    dcResult.mtu = 0; // "not provided by network"
 }
 
 void convertRilDataCallListToHal(void *response, size_t responseLen,
