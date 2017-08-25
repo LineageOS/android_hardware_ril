@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b109871a_515cb556",
+        "filename": "libril/ril_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6865,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-08-25T19:18:35Z",
+      "side": 1,
+      "message": "%\nShould be better",
+      "range": {
+        "startLine": 6865,
+        "startChar": 20,
+        "endLine": 6865,
+        "endChar": 22
+      },
+      "revId": "067315d0b7d9b2b9cdf638ede3615c808ead93d5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84a5b6b5_58cea39b",
+        "filename": "libril/ril_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6866,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-08-25T19:18:35Z",
+      "side": 1,
+      "message": "how is this going to work?\nif the check is true then num is always equal to 1\ndoesn\u0027t look right",
+      "range": {
+        "startLine": 6865,
+        "startChar": 0,
+        "endLine": 6866,
+        "endChar": 63
+      },
+      "revId": "067315d0b7d9b2b9cdf638ede3615c808ead93d5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
