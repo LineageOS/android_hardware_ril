@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cad0e6bd_2f6d21ae",
+        "filename": "libril/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-09-19T15:37:02Z",
+      "side": 1,
+      "message": "dsda? looks wrong to me, 2 sims aren\u0027t always dsda ( atm only zenfone are dsda for the matter )",
+      "range": {
+        "startLine": 26,
+        "startChar": 42,
+        "endLine": 26,
+        "endChar": 52
+      },
+      "revId": "a33d9185fb48deb00542b40dd51541b298156edd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
