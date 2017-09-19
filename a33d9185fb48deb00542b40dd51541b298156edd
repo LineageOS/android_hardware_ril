@@ -22,6 +22,30 @@
       "revId": "a33d9185fb48deb00542b40dd51541b298156edd",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3802dfcd_6cd3f46d",
+        "filename": "libril/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2017-09-19T15:39:04Z",
+      "side": 1,
+      "message": "This flag is unused",
+      "parentUuid": "cad0e6bd_2f6d21ae",
+      "range": {
+        "startLine": 26,
+        "startChar": 42,
+        "endLine": 26,
+        "endChar": 52
+      },
+      "revId": "a33d9185fb48deb00542b40dd51541b298156edd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
