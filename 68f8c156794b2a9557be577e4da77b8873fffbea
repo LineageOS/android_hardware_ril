@@ -16,6 +16,24 @@
       "revId": "68f8c156794b2a9557be577e4da77b8873fffbea",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f4676ce_ad850fd4",
+        "filename": "libril/ril.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2017-09-19T10:45:50Z",
+      "side": 1,
+      "message": "I know. I tried with gvim, nano, kwrite, all of them insert that newline. I guess I\u0027ll edit it away right here.",
+      "parentUuid": "1b24d158_d3fbab1b",
+      "revId": "68f8c156794b2a9557be577e4da77b8873fffbea",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
