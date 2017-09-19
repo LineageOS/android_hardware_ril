@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b24d158_d3fbab1b",
+        "filename": "libril/ril.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2017-09-19T09:41:46Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "68f8c156794b2a9557be577e4da77b8873fffbea",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
