@@ -12,7 +12,10 @@ LOCAL_SRC_FILES:= \
     at_tok.c
 
 LOCAL_SHARED_LIBRARIES := \
-    liblog libcutils libutils libril librilutils
+    liblog libcutils libutils libril librilutils libbase
+
+LOCAL_STATIC_LIBRARIES := \
+    libqemu_pipe
 
 LOCAL_STATIC_LIBRARIES := libqemu_pipe libbase
 
