@@ -35,6 +35,8 @@ ifeq (foo,foo)
   #build shared library
   LOCAL_SHARED_LIBRARIES += \
       libcutils libutils
+  LOCAL_STATIC_LIBRARIES := \
+      libqemu_pipe
   LOCAL_CFLAGS += -DRIL_SHLIB
   LOCAL_MODULE:= libreference-ril
   include $(BUILD_SHARED_LIBRARY)
