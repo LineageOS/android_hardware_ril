@@ -261,7 +261,8 @@ typedef enum {
     RADIO_TECH_GSM = 16, // Only supports voice
     RADIO_TECH_TD_SCDMA = 17,
     RADIO_TECH_IWLAN = 18,
-    RADIO_TECH_LTE_CA = 19
+    RADIO_TECH_LTE_CA = 19,
+    RADIO_TECH_DC-HSPAP = 20 // Dual Carrier HSPA+
 } RIL_RadioTechnology;
 
 typedef enum {

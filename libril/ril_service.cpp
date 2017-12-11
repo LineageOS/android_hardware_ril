@@ -3509,7 +3509,8 @@ RIL_CellInfoType getCellInfoTypeRadioTechnology(char *rat) {
         case RADIO_TECH_HSDPA:
         case RADIO_TECH_HSUPA:
         case RADIO_TECH_HSPA:
-        case RADIO_TECH_HSPAP: {
+        case RADIO_TECH_HSPAP:
+        case RADIO_TECH_DC-HSPAP: {
             return RIL_CELL_INFO_TYPE_WCDMA;
         }
 
