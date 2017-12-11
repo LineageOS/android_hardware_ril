@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69addf05_b88369d5",
+        "filename": "reference-ril/Android.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2017-12-11T08:38:02Z",
+      "side": 1,
+      "message": "This is here. Added in commit https://github.com/LineageOS/android_hardware_ril/commit/ba723cee9906bb0979283e7fdc6af47287cbc42c.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 46
+      },
+      "revId": "9fe81affcaa4c12555fc4960d543a7bc46a66d9a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
