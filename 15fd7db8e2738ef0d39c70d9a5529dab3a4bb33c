@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95986c9b_6f556887",
+        "filename": "librilutils/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1690
+      },
+      "writtenOn": "2017-12-26T21:46:41Z",
+      "side": 1,
+      "message": "already added",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 47
+      },
+      "revId": "15fd7db8e2738ef0d39c70d9a5529dab3a4bb33c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
