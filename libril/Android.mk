@@ -37,6 +37,7 @@ ifeq ($(TARGET_NEEDS_GCC_LIBRIL),true)
 else
     LOCAL_CLANG := true
     LOCAL_SANITIZE := integer
+    LOCAL_SDCLANG := false
 endif
 
 include $(BUILD_SHARED_LIBRARY)

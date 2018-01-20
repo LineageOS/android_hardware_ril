@@ -27,6 +27,7 @@ endif
 LOCAL_MODULE:= rild
 LOCAL_MODULE_TAGS := optional
 LOCAL_INIT_RC := rild.rc
+LOCAL_SDCLANG := false
 
 LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/libril
 
