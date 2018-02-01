@@ -1,5 +1,7 @@
 # Copyright 2006 The Android Open Source Project
 
+ifndef ENABLE_VENDOR_RIL_SERVICE
+
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
@@ -30,3 +32,4 @@ LOCAL_MODULE:= rild
 
 include $(BUILD_EXECUTABLE)
 
+endif
