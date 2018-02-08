@@ -36,6 +36,7 @@
 #include <libril/ril_ex.h>
 
 #define LIB_PATH_PROPERTY   "rild.libpath"
+#define LIB_PATHX_PROPERTY  "rild.libpath%d"
 #define LIB_ARGS_PROPERTY   "rild.libargs"
 #define MAX_LIB_ARGS        16
 
@@ -112,6 +113,8 @@ int main(int argc, char **argv) {
     const RIL_RadioFunctions *funcs;
     // lib path from rild.libpath property (if it's read)
     char libPath[PROPERTY_VALUE_MAX];
+    // lib path from rild.libpathx property (if it's read), where x is clientId
+    char libPathX[PROPERTY_VALUE_MAX];
     // flat to indicate if -- parameters are present
     unsigned char hasLibArgs = 0;
 
@@ -155,6 +158,8 @@ int main(int argc, char **argv) {
             // No lib sepcified on the command line, and nothing set in props.
             // Assume "no-ril" case.
             goto done;
+        } else if (property_get(LIB_PATHX_PROPERTY, atoi(clientId), libpathX, NULL)) {
+            rilLibPath = libPathX;
         } else {
             rilLibPath = libPath;
         }
