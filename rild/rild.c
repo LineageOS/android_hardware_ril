@@ -36,7 +36,7 @@
 #include <libril/ril_ex.h>
 
 #define LIB_PATH_PROPERTY   "rild.libpath"
-#define LIB_PATHX_PROPERTY  "rild.libpath%d"
+#define LIB_PATHX_PROPERTY  "rild.libpath%s"
 #define LIB_ARGS_PROPERTY   "rild.libargs"
 #define MAX_LIB_ARGS        16
 
@@ -114,6 +114,7 @@ int main(int argc, char **argv) {
     // lib path from rild.libpath property (if it's read)
     char libPath[PROPERTY_VALUE_MAX];
     // lib path from rild.libpathx property (if it's read), where x is clientId
+    char libPathXProp[sizeof(LIB_PATHX_PROPERTY)];
     char libPathX[PROPERTY_VALUE_MAX];
     // flat to indicate if -- parameters are present
     unsigned char hasLibArgs = 0;
@@ -158,10 +159,17 @@ int main(int argc, char **argv) {
             // No lib sepcified on the command line, and nothing set in props.
             // Assume "no-ril" case.
             goto done;
-        } else if (property_get(LIB_PATHX_PROPERTY, atoi(clientId), libpathX, NULL)) {
-            rilLibPath = libPathX;
         } else {
-            rilLibPath = libPath;
+            if (atoi(clientId) > 0) {
+                sprintf(libPathXProp, LIB_PATHX_PROPERTY, clientId);
+                if (0 == property_get(libPathXProp, libPathX, NULL)) {
+                    rilLibPath = libPath;
+                } else {
+                    rilLibPath = libPathX;
+                }
+            } else {
+                rilLibPath = libPath;
+            }
         }
     }
 
