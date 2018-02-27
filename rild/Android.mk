@@ -1,5 +1,7 @@
 # Copyright 2006 The Android Open Source Project
 
+ifndef ENABLE_VENDOR_RIL_SERVICE
+
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
@@ -27,7 +29,7 @@ endif
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_MODULE:= rild
-LOCAL_INIT_RC := rild.rc
 
 include $(BUILD_EXECUTABLE)
 
+endif
