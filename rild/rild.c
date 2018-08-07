@@ -74,6 +74,7 @@ extern void RIL_onUnsolicitedResponse(int unsolResponse, const void *data,
 extern void RIL_requestTimedCallback (RIL_TimedCallback callback,
         void *param, const struct timeval *relativeTime);
 
+extern void initWithMmapSize();
 
 static struct RIL_Env s_rilEnv = {
     RIL_onRequestComplete,
@@ -125,6 +126,7 @@ int main(int argc, char **argv) {
     RLOGD("**RIL Daemon Started**");
     RLOGD("**RILd param count=%d**", argc);
 
+    initWithMmapSize();
     umask(S_IRGRP | S_IWGRP | S_IXGRP | S_IROTH | S_IWOTH | S_IXOTH);
     for (i = 1; i < argc ;) {
         if (0 == strcmp(argv[i], "-l") && (argc - i > 1)) {
