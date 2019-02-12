@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cacd11f3_e82cb0ae",
+        "filename": "libril/ril_service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2019-02-12T09:26:29Z",
+      "side": 1,
+      "message": "hidl_string doesn\u0027t seem to have the append modifier, and it\u0027s const so it can\u0027t be modified",
+      "parentUuid": "3a798473_348c5408",
+      "revId": "e3d006fa722c02fc26acdfcaa43a3f3a1378eba9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43c9cb7b_c2187a91",
         "filename": "libril/ril_service.cpp",
         "patchSetId": 3
