@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a798473_348c5408",
+        "filename": "libril/ril_service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2019-02-12T09:22:38Z",
+      "side": 1,
+      "message": "directly use operatorNumeric.appned(\"+\") instead of creating new string",
+      "revId": "e3d006fa722c02fc26acdfcaa43a3f3a1378eba9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c9cb7b_c2187a91",
+        "filename": "libril/ril_service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4587,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2019-02-12T09:22:38Z",
+      "side": 1,
+      "message": "use ifdef instead of ifndef",
+      "revId": "e3d006fa722c02fc26acdfcaa43a3f3a1378eba9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
