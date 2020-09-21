@@ -31,7 +31,7 @@ ifeq ($(TARGET_DEVICE),dream)
   LOCAL_CFLAGS += -DPOLL_CALL_STATE -DUSE_QMI
 endif
 
-ifeq (foo,foo)
+ifneq ($(BOARD_PROVIDES_LIBRIL),true)
   #build shared library
   LOCAL_SHARED_LIBRARIES += \
       libcutils libutils
