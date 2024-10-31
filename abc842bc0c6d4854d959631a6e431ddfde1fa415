@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3683890f_5d3ea817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2024-10-31T15:57:31Z",
+      "side": 1,
+      "message": "If this is needed by any shipping device it will need to be done in a different way.",
+      "revId": "abc842bc0c6d4854d959631a6e431ddfde1fa415",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
