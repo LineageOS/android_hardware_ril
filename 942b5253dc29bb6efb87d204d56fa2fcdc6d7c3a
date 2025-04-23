@@ -34,6 +34,24 @@
       "parentUuid": "6225ed12_28c22068",
       "revId": "942b5253dc29bb6efb87d204d56fa2fcdc6d7c3a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d894912b_456be256",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-04-23T15:49:35Z",
+      "side": 1,
+      "message": "you aren\u0027t overriding libril in your vendor by chance, are you?",
+      "parentUuid": "f22d9f9f_4c717c09",
+      "revId": "942b5253dc29bb6efb87d204d56fa2fcdc6d7c3a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
