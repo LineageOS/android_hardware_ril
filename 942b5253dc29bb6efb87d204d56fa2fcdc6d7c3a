@@ -70,6 +70,24 @@
       "parentUuid": "f22d9f9f_4c717c09",
       "revId": "942b5253dc29bb6efb87d204d56fa2fcdc6d7c3a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c00ec162_9dab2fe0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33800
+      },
+      "writtenOn": "2025-04-23T15:50:55Z",
+      "side": 1,
+      "message": "\u003e you aren\u0027t overriding libril in your vendor by chance, are you?\nNo.",
+      "parentUuid": "0f5defae_609a23cb",
+      "revId": "942b5253dc29bb6efb87d204d56fa2fcdc6d7c3a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
