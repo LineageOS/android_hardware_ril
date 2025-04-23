@@ -52,6 +52,24 @@
       "parentUuid": "f22d9f9f_4c717c09",
       "revId": "942b5253dc29bb6efb87d204d56fa2fcdc6d7c3a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f5defae_609a23cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33800
+      },
+      "writtenOn": "2025-04-23T15:49:53Z",
+      "side": 1,
+      "message": "I also checked: No proprietary blobs requires libreference-ril. To be honest, I don\u0027t really understand where it came from",
+      "parentUuid": "f22d9f9f_4c717c09",
+      "revId": "942b5253dc29bb6efb87d204d56fa2fcdc6d7c3a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
