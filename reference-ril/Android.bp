@@ -46,6 +46,10 @@ cc_library_shared {
         "librilutils",
     ],
     static_libs: ["libbase"],
+    header_libs: [
+        "ril_headers",
+    ],
+
     cflags: [
         "-D_GNU_SOURCE", // for asprinf
         "-Wall",
