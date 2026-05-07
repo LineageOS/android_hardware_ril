@@ -123,8 +123,15 @@ static void addIntermediate(const char *line)
     ATLine *p_new;
 
     p_new = (ATLine  *) malloc(sizeof(ATLine));
+    if (p_new == NULL) {
+        return;
+    }
 
     p_new->line = strdup(line);
+    if (p_new->line == NULL) {
+        free(p_new);
+        return;
+    }
 
     /* note: this adds to the head of the list, so the list
        will be in reverse order of lines received. the order is flipped
